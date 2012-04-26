@@ -1,0 +1,19 @@
+{
+  "name": "Unsocialize: The Link Unsocializer",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Provides a right-click menu item for direct links, bypassing
+    Facebook's \"social readers\"",
+  "icons" : {
+    "16": "us_16.png",
+    "48": "us_48.png",
+    "128": "us_128.png"
+  },
+  "background": {
+    "scripts": [ "unsocializer.js" ]
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ]
+}

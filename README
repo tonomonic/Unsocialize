@@ -1,0 +1,49 @@
+Unsocialize: The Link Unsocializer
+
+http://www.cs.ubc.ca/~mklawren/unsocialize.html
+https://chrome.google.com/webstore/detail/hdogcpghhdcocgdjogbglgejhdeedijn
+
+A Google Chrome extension for bypassing Facebook social reader app install
+requests by providing a right-click menu item.
+
+When your Facebook News Feed contains items such as "John Doe read an
+article", the article link often redirects you to an app install request, which
+will access your personal information and post on your timeline.
+
+This extension provides a right-click menu item: "Unsocialize", which will open
+the linked article in a new tab, bypassing the install request and any other
+tracking metrics.
+
+I appreciate your comments, suggestions and bug notifications:
+mikeklawrence@gmail.com
+
+GENERAL INFORMATION
+
+This repository contains a Google Chrome extension in the package/ subfolder.
+This subfolder is what is sent (in a zip archive) to the Chrome Web Store. For
+more information on writing Chroms extensions, see
+
+http://code.google.com/chrome/extensions/index.html
+
+INSTALLATION
+
+1. Launch Google Chrome
+2. Go to the URL chrome://settings/extensions
+3. Check "Developer mode" (if it isn't already)
+4. Click "Load unpacked extension"
+5. Navigate to the package/ subfolder, and click OK.
+
+DEBUGGING
+
+1. Go to the Chrome Extensions Page (chrome://settings/extensions)
+2. Click the expansion arrow next to Unsocializer.
+3. Click the active view _generated_background_page.html
+
+A developer tools window should open, you can add breakpoints and step through
+the JavaScript code here. For more info see
+
+For development purposes, I recommend removing the documentUrlPatterns attribute
+from the _usMenuItem variable in unsocializer.js. This attribute restricts
+unsocializer to only appear for webpages on Facebook. Removing this attribute
+allows testing on arbitrary pages, such as the included urls.html. ***Don't
+forget to change this attribute back before committing!***
