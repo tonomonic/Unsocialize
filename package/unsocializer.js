@@ -34,10 +34,17 @@ var _usMenuItemId = chrome.contextMenus.create(_usMenuItem, null);
 // unsocialized link.
 function unsocialize(info, tab) {
   var url = info.linkUrl;
+
+  // First, extracts the redirect_uri parameter value
   if (url.indexOf('redirect_uri=') != -1) {
     url = url.substring(url.indexOf('redirect_uri=')+13, url.length);
+    url = url.substr(0, url.indexOf('&'));
   }
+
   url = replaceCharCodes(url);
+
+  // The resulting URL may have trailing parameters, which we need to
+  // additionally strip.
   if (url.indexOf('?fb_') != -1) {
     url = url.substr(0, url.indexOf('?fb_'));
   }
