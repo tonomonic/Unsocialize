@@ -35,20 +35,31 @@ var _usMenuItemId = chrome.contextMenus.create(_usMenuItem, null);
 function unsocialize(info, tab) {
   var url = info.linkUrl;
 
-  // First, extracts the redirect_uri parameter value
   if (url.indexOf('redirect_uri=') != -1) {
+    // For the webpage 
+    // https://www.facebook.com/connect/uiserver.php
+    // The URL containing the desired content is in the 'redirect_uri'
+    // parameter.
     url = url.substring(url.indexOf('redirect_uri=')+13, url.length);
+    url = url.substr(0, url.indexOf('&'));
+  } else if (url.indexOf('u=http') != -1) {
+    // For the webpage http://www.facebook.com/l.php,
+    // the URL containing the desired content is in the 'u' parameter.
+    url = url.substring(url.indexOf('u=http')+2, url.length);
     url = url.substr(0, url.indexOf('&'));
   }
 
+  // Now we have the full URL, but still need to replace hex codes with chars,
+  // e.g. %2F -> '/'
   url = replaceCharCodes(url);
 
-  // The resulting URL may have trailing parameters, which we need to
-  // additionally strip.
-  if (url.indexOf('?fb_') != -1) {
-    url = url.substr(0, url.indexOf('?fb_'));
+  // The resulting URL may still have trailing parameters related to facebook
+  // stuff that the destination domain receives. Let's get rid of those as well.
+  if (url.indexOf('?fb') != -1) {
+    url = url.substr(0, url.indexOf('?fb'));
   }
 
+  // Bingo, open a tab with the unsocialized url.
   chrome.tabs.create({"url": url}, null);
 }
 

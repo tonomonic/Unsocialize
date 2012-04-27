@@ -1,7 +1,25 @@
 Unsocialize: The Link Unsocializer
+Copyright 2012 Michael Lawrence, mikeklawrence@gmail.com
 
 http://www.cs.ubc.ca/~mklawren/unsocialize.html
 https://chrome.google.com/webstore/detail/hdogcpghhdcocgdjogbglgejhdeedijn
+
+LICENSE
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+For a copy of the GNU General Public License, see
+<http://www.gnu.org/licenses/>.
+
+DESCRIPTION
 
 A Google Chrome extension for bypassing Facebook social reader app install
 requests by providing a right-click menu item.
@@ -13,6 +31,9 @@ will access your personal information and post on your timeline.
 This extension provides a right-click menu item: "Unsocialize", which will open
 the linked article in a new tab, bypassing the install request and any other
 tracking metrics.
+
+It should work for any link from within Facebook, and also bypasses tracking
+metrics even for links that don't direct to social reader app requests.
 
 I appreciate your comments, suggestions and bug notifications:
 mikeklawrence@gmail.com
