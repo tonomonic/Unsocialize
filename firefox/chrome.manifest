@@ -1,0 +1,5 @@
+content   unsocialize                content/
+skin      unsocialize  classic/1.0   skin/
+resource  unsocialize                modules/
+
+overlay chrome://browser/content/browser.xul  chrome://unsocialize/content/browserOverlay.xul

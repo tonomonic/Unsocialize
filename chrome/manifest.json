@@ -10,7 +10,7 @@
     "128": "us_128.png"
   },
   "background": {
-    "scripts": [ "unsocializer.js" ]
+    "scripts": [ "background.js", "unsocialize.js" ]
   },
   "permissions": [
     "contextMenus",

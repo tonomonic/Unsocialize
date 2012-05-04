@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+
+<overlay id="unsocialize-browser-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="text/javascript"
+    src="chrome://unsocialize/content/browserOverlay.js" />
+
+  <menupopup id="contentAreaContextMenu">
+    <menuitem id="unsocialize-menu-item"
+              class="menuitem-iconic"
+              label="Unsocialize"
+	      image="chrome://unsocialize/skin/us_16.png"
+              oncommand="Unsocialize.menuItemClicked(event);" />
+  </menupopup>
+
+  Foo bar baz
+</overlay>

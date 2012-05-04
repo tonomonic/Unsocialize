@@ -1,40 +1,10 @@
-// Copyright 2012 Michael Lawrence, mikeklawrence@gmail.com
-//
-// Program for inserting an item into a right-click context menu, which removes
-// tracking metrics and app install requests from links within facebook.
-//
-// Right now, it focuses on "social reader" links, where the url of the article
-// is incoded in the url parameter "redirect_uri". A future extension would be
-// to un-track normal links, which go through http://www.facebook.com/l.php
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For a copy of the GNU General Public License, see
-// <http://www.gnu.org/licenses/>.
+var EXPORTED_SYMBOLS = [ "unsocialize" ];
 
-var _usMenuItem = {
-  "title": "Unsocialize",
-  "contexts": [ "link" ],
-  // Remove this attribute when developing/debugging.
-  "documentUrlPatterns": [ "https://*.facebook.com/*" ],
-  "onclick": unsocialize
-};
-
-var _usMenuItemId = chrome.contextMenus.create(_usMenuItem, null);
-
-// Takes the linkUrl attribute, unsocializes it, and opens a new tab with the
-// unsocialized link.
-function unsocialize(info, tab) {
-  var url = info.linkUrl;
-
+/** Returns an 'unsocialized' url.
+ * If url has a 'redirect_uri' parameter, it is extracted and returned.
+ * Otherwise the original URL is returned.
+ */
+function unsocialize(url) {
   if (url.indexOf('redirect_uri=') != -1) {
     // For the webpage 
     // https://www.facebook.com/connect/uiserver.php
@@ -59,8 +29,7 @@ function unsocialize(info, tab) {
     url = url.substr(0, url.indexOf('?fb'));
   }
 
-  // Bingo, open a tab with the unsocialized url.
-  chrome.tabs.create({"url": url}, null);
+  return url;
 }
 
 // Replaces URL ascii char codes in hex(e.g. %3F) with the actual chars

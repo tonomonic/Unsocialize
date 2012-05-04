@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{4E9EB864-7C37-4F96-A7EA-B2372F7DF1E5}</em:id>
+    <em:name>Unsocialize: The Link Unsocializer</em:name>
+    <em:description>Provides a right-click menu item for direct links, bypassing
+    Facebook's "social readers"</em:description>
+    <em:version>1.2</em:version>
+    <em:creator>Michael Lawrence, mikeklawrence@gmail.com</em:creator>
+    <em:homepageURL>http://www.cs.ubc.ca/~mklawren/unsocialize.html</em:homepageURL>
+    <em:iconURL>chrome://unsocialize/skin/us_48.png</em:iconURL>
+    <em:icon64URL>chrome://unsocialize/skin/us_64.png</em:icon64URL>
+    <em:type>2</em:type>
+
+    <!-- Mozilla Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>10.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

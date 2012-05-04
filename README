@@ -6,65 +6,93 @@ https://chrome.google.com/webstore/detail/hdogcpghhdcocgdjogbglgejhdeedijn
 
 LICENSE
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-For a copy of the GNU General Public License, see
-<http://www.gnu.org/licenses/>.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  For a copy of the GNU General Public License, see
+  <http://www.gnu.org/licenses/>.
 
 DESCRIPTION
 
-A Google Chrome extension for bypassing Facebook social reader app install
-requests by providing a right-click menu item.
+  A browser extension for Google Chrome and Mozilla Firefox for bypassing
+  Facebook social reader app install requests by providing a right-click menu
+  item.
+  
+  When your Facebook News Feed contains items such as "John Doe read an
+  article", the article link often redirects you to an app install request,
+  which will access your personal information and post on your timeline.
+  
+  This extension provides a right-click menu item: "Unsocialize", which will
+  open the linked article in a new tab, bypassing the install request and any
+  other tracking metrics.
+  
+  It should work for any link from within Facebook, and also bypasses tracking
+  metrics even for links that don't direct to social reader app requests.
+  
+  I appreciate your comments, suggestions and bug notifications:
+  mikeklawrence@gmail.com
 
-When your Facebook News Feed contains items such as "John Doe read an
-article", the article link often redirects you to an app install request, which
-will access your personal information and post on your timeline.
+BUILD
 
-This extension provides a right-click menu item: "Unsocialize", which will open
-the linked article in a new tab, bypassing the install request and any other
-tracking metrics.
-
-It should work for any link from within Facebook, and also bypasses tracking
-metrics even for links that don't direct to social reader app requests.
-
-I appreciate your comments, suggestions and bug notifications:
-mikeklawrence@gmail.com
-
-GENERAL INFORMATION
-
-This repository contains a Google Chrome extension in the package/ subfolder.
-This subfolder is what is sent (in a zip archive) to the Chrome Web Store. For
-more information on writing Chroms extensions, see
-
-http://code.google.com/chrome/extensions/index.html
+  The code and configuration for the Firefox and Chrome extensions are contained
+  in firefox/ and chrome/ respectively. Common source is in common/
+  
+  A makefile is used to package the extensions by copying common files and
+  creating a zip archive. It has targets: 'firefox' (producing unsocialize.xpi),
+  'chrome' (producing unsocialize.zip), and 'all' (producing both).
+  
+  'make clean' removes the copied common files and packaged extensions.
 
 INSTALLATION
 
-1. Launch Google Chrome
-2. Go to the URL chrome://settings/extensions
-3. Check "Developer mode" (if it isn't already)
-4. Click "Load unpacked extension"
-5. Navigate to the package/ subfolder, and click OK.
+  Firefox
 
-DEBUGGING
+    Drag unsocialize.xpi into a Firefox window and restart.
 
-1. Go to the Chrome Extensions Page (chrome://settings/extensions)
-2. Click the expansion arrow next to Unsocializer.
-3. Click the active view _generated_background_page.html
+  Chrome
 
-A developer tools window should open, you can add breakpoints and step through
-the JavaScript code here. For more info see
+    Go to chrome://settings/extensions, check "developer mode", "load unpacked
+    extension", and select the chrome/ folder.
+    
+    The unsocialize.zip file can be uploaded to the chrome web store. To create
+    a packaged extension, select "pack extension" from
+    chrome://settings/extensions.
 
-For development purposes, I recommend removing the documentUrlPatterns attribute
-from the _usMenuItem variable in unsocializer.js. This attribute restricts
-unsocializer to only appear for webpages on Facebook. Removing this attribute
-allows testing on arbitrary pages, such as the included urls.html. ***Don't
-forget to change this attribute back before committing!***
+DEVELOPING
+
+  Chrome
+
+    The source can be viewed by visiting chrome://settings/extensions, clicking
+    the expansion arrow next to Unsocialize, and selecting the active view
+    "_generated_background_page.html". Chrome's debugger should open
+    automatically.
+
+    A developer tools window should open, you can add breakpoints and step
+    through the JavaScript code here. For more info see
+
+    For more information on writing Chrome extensions, see
+    http://code.google.com/chrome/extensions/index.html
+
+    *NOTE* It is recommended that the _usMenuItem.documentUrlPatterns (in
+    unsocialize.js) is removed for development.  This attribute restricts
+    unsocialize to only appear for webpages on Facebook. Removing this attribute
+    allows testing on arbitrary pages, such as the included urls.html. ***Don't
+    forget to change this attribute back before committing!***
+
+  Firefox
+    
+    You should create a dev profile and configure it as per 
+    https://developer.mozilla.org/en/Setting_up_extension_development_environment
+
+    Documentation for Firefox extension development can be found at
+    https://developer.mozilla.org/en/Extensions
+
+    When first starting out, the following tutorial is useful:
+    https://developer.mozilla.org/en/XUL_School
