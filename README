@@ -80,12 +80,6 @@ DEVELOPING
     For more information on writing Chrome extensions, see
     http://code.google.com/chrome/extensions/index.html
 
-    *NOTE* It is recommended that the _usMenuItem.documentUrlPatterns (in
-    unsocialize.js) is removed for development.  This attribute restricts
-    unsocialize to only appear for webpages on Facebook. Removing this attribute
-    allows testing on arbitrary pages, such as the included urls.html. ***Don't
-    forget to change this attribute back before committing!***
-
   Firefox
     
     You should create a dev profile and configure it as per 

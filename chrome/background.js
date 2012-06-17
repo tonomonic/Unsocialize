@@ -1,8 +1,8 @@
 var _usMenuItem = {
   "title": "Unsocialize",
   "contexts": [ "link" ],
-  // Remove this attribute when developing/debugging.
-  "documentUrlPatterns": [ "*://*.facebook.com/*" ],
+  // file://* is for testing on local html files.
+  "documentUrlPatterns": [ "file://*", "*://*.facebook.com/*" ],
   "onclick": unsocializeClicked
 };
 

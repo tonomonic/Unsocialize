@@ -32,13 +32,19 @@ function unsocialize(url) {
   return url;
 }
 
-// Replaces URL ascii char codes in hex(e.g. %3F) with the actual chars
+// Replaces URL ascii char codes in hex (e.g. %3F) with the actual chars
 // (e.g. '?').
+// This method performs a single pass over the url, so that if the percent
+// character itself is encoded (%25), then it will be translated as a % and not
+// decoded.
 function replaceCharCodes(url) {
-  while (url.indexOf('%') != -1) {
-    var nextCharCode = url.substr(url.indexOf('%'), 3);
-    var integerCode = toInteger(nextCharCode.substring(1));
-    url = url.replace(nextCharCode, String.fromCharCode(integerCode));
+  for (var i = 0; i < url.length; i++) {
+    if (url.charAt(i) == '%') {
+      var nextCharCode = url.substr(i+1, 2);
+      var integerCode = toInteger(nextCharCode);
+      url = url.substr(0, i) + String.fromCharCode(integerCode)
+          + url.substring(i+3);
+    }
   }
   return url;
 }
