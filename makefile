@@ -6,9 +6,12 @@ firefox_pkg = unsocialize.xpi
 # and navigate to the chrome/ folder.
 chrome_pkg = unsocialize.zip
 
+safari_dir = safari/unsocialize.safariextension
+
 # TARGETS
 .PHONY: all
-all: $(firefox_pkg) $(chrome_pkg)
+all: $(firefox_pkg) $(chrome_pkg) \
+     $(safari_dir)/Icon-64.png $(safari_dir)/unsocialize.js
 	@echo "Done"
 
 .PHONY: firefox
@@ -17,12 +20,18 @@ firefox: $(firefox_pkg)
 .PHONY: chrome
 chrome: $(chrome_pkg)
 
+.PHONY: safari
+safari: $(safari_dir)/Icon-64.png $(safari_dir)/unsocialize.js
+
 .PHONY: clean
 clean:
 	rm -f $(firefox_pkg)
 	rm -f $(ff_common_src)
 	rm -f $(chrome_pkg)
 	rm -f $(cr_common_src)
+	rm -f $(safari_dir)/Icon-64.png
+	rm -f $(safari_dir)/unsocialize.js
+
 	@echo "Cleanup is done."
 
 # FIREFOX
@@ -74,3 +83,10 @@ chrome/unsocialize.js: common/unsocialize.js
 # Rule for zipping chrome package
 $(chrome_pkg): $(cr_src) $(cr_common_src)
 	zip -r $(chrome_pkg) chrome/ -x *.swp
+
+# SAFARI
+$(safari_dir)/Icon-64.png: images/us_64.png
+	cp images/us_64.png $(safari_dir)/Icon-64.png
+
+$(safari_dir)/unsocialize.js: common/unsocialize.js
+	cp common/unsocialize.js $(safari_dir)

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Michael Lawrence</string>
+	<key>Builder Version</key>
+	<string>6534.57.2</string>
+	<key>CFBundleDisplayName</key>
+	<string>unsocialize</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.mikelawrence.unsocialize</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.3</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Context Menu Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>unsocializeclicked</string>
+				<key>Identifier</key>
+				<string>unsocialize-contextmenu-item</string>
+				<key>Title</key>
+				<string>Unsocialize</string>
+			</dict>
+		</array>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>Start</key>
+			<array>
+				<string>injected.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Provides a right-click menu item for direct links, bypassing Facebook's "social readers"</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.facebook.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://www.cs.ubc.ca/~mklawren/unsocialize.html</string>
+</dict>
+</plist>

@@ -3,6 +3,7 @@ Copyright 2012 Michael Lawrence, mikeklawrence@gmail.com
 
 http://www.cs.ubc.ca/~mklawren/unsocialize.html
 https://chrome.google.com/webstore/detail/hdogcpghhdcocgdjogbglgejhdeedijn
+https://addons.mozilla.org/en-US/firefox/addon/unsocialize/
 
 LICENSE
 
@@ -21,9 +22,9 @@ LICENSE
 
 DESCRIPTION
 
-  A browser extension for Google Chrome and Mozilla Firefox for bypassing
-  Facebook social reader app install requests by providing a right-click menu
-  item.
+  A browser extension for Google Chrome, Mozilla Firefox, and Apple Safari for
+  bypassing Facebook social reader app install requests by providing a
+  right-click menu item.
   
   When your Facebook News Feed contains items such as "John Doe read an
   article", the article link often redirects you to an app install request,
@@ -41,12 +42,16 @@ DESCRIPTION
 
 BUILD
 
-  The code and configuration for the Firefox and Chrome extensions are contained
-  in firefox/ and chrome/ respectively. Common source is in common/
+  All browser-specific code is stored in firefox/, chrome/ or safari/.
+  Common source is in common/
   
-  A makefile is used to package the extensions by copying common files and
-  creating a zip archive. It has targets: 'firefox' (producing unsocialize.xpi),
-  'chrome' (producing unsocialize.zip), and 'all' (producing both).
+  A makefile is used to prepare the extensions by copying common files and
+  creating zip archives. It has targets: 'firefox' (producing unsocialize.xpi),
+  'chrome' (producing unsocialize.zip), 'safari' (which copies common sources to
+  safari/unsocialize.safariextension) and 'all' (producing all three).
+
+  (for notes on packing Chrome and Safari extensions, see the INSTALLATION
+  section.)
   
   'make clean' removes the copied common files and packaged extensions.
 
@@ -64,6 +69,18 @@ INSTALLATION
     The unsocialize.zip file can be uploaded to the chrome web store. To create
     a packaged extension, select "pack extension" from
     chrome://settings/extensions.
+
+  Safari
+    
+    In the Advanced pane of the Safari Preferences dialog, ensure "Show Develop
+    menu in menu bar" is selected.
+
+    In the Develop menu, select "Show Extension Builder". Click the '+' icon in
+    the bottom-left of the window, select "Add Extension", and navigate to
+    safari/unsocialize.safariextension/
+
+    The extension can be packed by clicking "Build Package", which produces a
+    .safariextz file that can be dragged directly into Safari.
 
 DEVELOPING
 
@@ -90,3 +107,18 @@ DEVELOPING
 
     When first starting out, the following tutorial is useful:
     https://developer.mozilla.org/en/XUL_School
+
+  Safari
+
+    You will need to sign up for an apple developer account at
+    https://developer.apple.com/ and create a key.
+
+    The Safari Extension documentation can be found here
+    https://developer.apple.com/library/safari/navigation/
+
+    Debugging: The safari extension consists of a global.html file, and a
+    page-injected script injected.js. The global page, contains an in-line
+    script and also includes the unsocialize.js common source.
+
+    For more information on debugging these, see
+    https://developer.apple.com/library/safari/#documentation/Tools/Conceptual/SafariExtensionGuide/DebuggingExtensions/DebuggingExtensions.html

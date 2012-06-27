@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script type="text/javascript" src="unsocialize.js"></script>
+    <script type="text/javascript">
+      // This function is called to validate the unsocialize menu item, which is
+      // done based on whether or not a href was passed as userInfo from the
+      // injected script.
+      function validateHandle(e) {
+        if (e.userInfo) {
+          e.target.disabled = false;
+        } else {
+          e.target.disabled = true;
+        }
+      }
+
+      // This function handles the unsocialize click by opening a new tab with
+      // the unsocialized URL.
+      function commandHandle(e) {
+        if (e.command == "unsocializeclicked") {
+          var newTab = safari.application.activeBrowserWindow.openTab();
+          newTab.url = unsocialize(e.userInfo);
+        }
+      }
+
+      safari.application.addEventListener("command", commandHandle, false);
+      safari.application.addEventListener("validate", validateHandle, false);
+    </script>
+  </head>
+  <body></body>
+</html>
